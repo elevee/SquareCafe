@@ -15,13 +15,22 @@ $(document).ready(function() {
     $('select').each(function() {
       console.log(
 
-        total_cost = total_cost + Number($(this).find(':selected').attr('data-price'))
+        total_cost = total_cost + parseFloat($(this).find(':selected').attr('data-price'))
       );
     });
     $('form').append($('.field').first().html());
-    $('#cost').text(total_cost);
+    $('#cost').text(total_cost/100); // converted to decimal
   });
 
+  // $("#form").submit(function(){       //post attempt
+  //   $.post(url, function(data) {
+  //       $("#content").html(data);
+  //   });
+  });
   
+});
 
+
+// $.post("submit.php", { body: 'Will be ready in 10 minutes' }, function(response) {
+//   // all done commenting
 });
