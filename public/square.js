@@ -6,8 +6,8 @@ $(document).ready(function() {
   var coffee = 0;
 
   $('form').on('change', 'select', function(){
-    
-    
+
+
     $('#drinks').text(coffee += 1);
 
     var total_cost = 0;
@@ -16,21 +16,19 @@ $(document).ready(function() {
       console.log(
 
         total_cost = total_cost + parseFloat($(this).find(':selected').attr('data-price'))
-      );
+        );
     });
     $('form').append($('.field').first().html());
     $('#cost').text(total_cost/100); // converted to decimal
-  });
-
-  // $("#form").submit(function(){       //post attempt
-  //   $.post(url, function(data) {
-  //       $("#content").html(data);
-  //   });
-  });
   
+  });
+
+  $(".button").click(function(event) {
+      event.preventDefault();
+      $.post("/shop", $("#coffee_order").serialize(), function() {
+        alert("Order Submitted: Cya in 15!!! <3")
+      });
+    });
+
 });
 
-
-// $.post("submit.php", { body: 'Will be ready in 10 minutes' }, function(response) {
-//   // all done commenting
-});
